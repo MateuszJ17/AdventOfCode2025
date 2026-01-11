@@ -20,7 +20,8 @@ public class DayOne : Solution<int, int>
                 newPosition += 100;
             
             startPosition = newPosition;
-            if (startPosition == 0) result++;
+            if (startPosition == 0)
+                result++;
         }
 
         return result;
@@ -49,7 +50,8 @@ public class DayOne : Solution<int, int>
             result += numberOfTicks / 100;
 
             endPosition %= 100;
-            if (endPosition < 0) endPosition += 100;
+            if (endPosition < 0)
+                endPosition += 100;
 
             if (originalPosition == 0)
             {
@@ -60,9 +62,7 @@ public class DayOne : Solution<int, int>
             if (endPosition == 0 ||
                 (directionSign > 0 && endPosition < originalPosition) ||
                 (directionSign < 0 && endPosition > originalPosition))
-            {
                 result++;
-            }
             
             startPosition = endPosition;
         }
