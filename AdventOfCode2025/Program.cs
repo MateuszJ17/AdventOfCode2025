@@ -1,8 +1,5 @@
 ﻿using AdventOfCode2025;
 
-var dayOne = new DayOne();
-var resultPartOne = dayOne.PartOne();
-var resultPartTwo = dayOne.PartTwo();
+var dayTwo = new DayTwo();
 
-Console.WriteLine($"Day One Part One: {resultPartOne}");
-Console.WriteLine($"Day One Part Two: {resultPartTwo}");
+Console.WriteLine($"DayTwo part one: {dayTwo.PartOne()}");
