@@ -14,6 +14,9 @@
       <None Update="PuzzlesInputs\DayTwo.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="PuzzlesInputs\DayThree.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

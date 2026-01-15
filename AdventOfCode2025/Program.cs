@@ -1,6 +1,6 @@
 ﻿using AdventOfCode2025;
 
-var dayTwo = new DayTwo();
+var solution = new DayThree();
 
-// Console.WriteLine($"DayTwo part one: {dayTwo.PartOne()}");
-Console.WriteLine($"DayTwo part two: {dayTwo.PartTwo()}");
+Console.WriteLine($"Part one: {solution.PartOne()}");
+// Console.WriteLine($"Part two: {solution.PartTwo()}");
