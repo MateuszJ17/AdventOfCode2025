@@ -2,7 +2,7 @@ using System.Text;
 
 namespace AdventOfCode2025;
 
-public class DayThree : Solution<int, int>
+public class DayThree : Solution<int, long>
 {
     public override int PartOne()
     {
@@ -47,8 +47,42 @@ public class DayThree : Solution<int, int>
         return result;
     }
 
-    public override int PartTwo()
+    public override long PartTwo()
     {
-        throw new NotImplementedException();
+        var input = GetPuzzleInput("DayThree");
+        
+        long result = 0;
+        var combined = new StringBuilder();
+
+        foreach (var bank in input)
+        {
+            int counter = 12;
+            int startIndex = 0;
+            
+            for (int i = 0; i < 12; i++)
+            {
+                char bestPick = '0';
+                int bestPickIndex = 0;
+                
+                for (int j = startIndex; j <= bank.Length - counter; j++)
+                {
+                    if (bank[j] > bestPick)
+                    {
+                        bestPick = bank[j];
+                        bestPickIndex = j;
+                    }
+                }
+                
+                combined.Append(bestPick);
+                startIndex = bestPickIndex + 1;
+                counter--;
+            }
+            
+            result += long.Parse(combined.ToString());
+            
+            combined.Clear();
+        }
+
+        return result;
     }
 }
