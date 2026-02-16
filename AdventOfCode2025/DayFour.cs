@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace AdventOfCode2025;
 
 public class DayFour : Solution<int, int>
@@ -42,6 +44,17 @@ public class DayFour : Solution<int, int>
         HashSet<(int Row, int Column)> neighbours,
         string[] input)
     {
+        return IsAccessible(row, column, totalRows, totalColumns, neighbours, input.Select(x => x.ToCharArray()).ToArray());
+    }
+    
+    private bool IsAccessible(
+        int row,
+        int column,
+        int totalRows,
+        int totalColumns,
+        HashSet<(int Row, int Column)> neighbours,
+        char[][] input)
+    {
         var neighboursToActuallyCheck = new HashSet<(int Row, int Column)>(neighbours);
         
         if (row == 0) neighboursToActuallyCheck.RemoveWhere(x => x.Row == -1);
@@ -62,6 +75,55 @@ public class DayFour : Solution<int, int>
 
     public override int PartTwo()
     {
-        throw new NotImplementedException();
+        var input = GetPuzzleInput("DayFour");
+        
+        char[][] parsedInput = input.Select(x => x.ToCharArray()).ToArray();
+        
+        var neighbours = new HashSet<(int Row, int Column)>
+        {
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+            (0, -1),
+            (0, 1),
+            (1, -1),
+            (1, 0),
+            (1, 1)
+        };
+        
+        var removeThisRound = new HashSet<(int Row, int Column)>();
+        
+        int result = 0;
+
+        while (true)
+        {
+            int operationsThisRound = 0;
+            removeThisRound.Clear();
+            
+            for (int row = 0; row < parsedInput.Length; row++)
+            {
+                for (int column = 0; column < parsedInput[row].Length; column++)
+                {
+                    if (parsedInput[row][column] != '@') continue;
+
+                    if (IsAccessible(row, column, parsedInput.Length, parsedInput[row].Length, neighbours, parsedInput))
+                    {
+                        removeThisRound.Add((row, column));
+                    }
+                }
+            }
+
+            foreach (var tuple in removeThisRound)
+            {
+                parsedInput[tuple.Row][tuple.Column] = '.';
+                operationsThisRound++;
+                result++;
+            }
+            
+            if (operationsThisRound == 0)
+            {
+                return result;
+            }
+        }
     }
 }
