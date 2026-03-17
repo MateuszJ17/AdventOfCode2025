@@ -23,6 +23,9 @@
       <None Update="PuzzlesInputs\DayFourMock.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="PuzzlesInputs\DayFive.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>
